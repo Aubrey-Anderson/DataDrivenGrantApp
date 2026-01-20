@@ -2,6 +2,17 @@ import TableRow from "./TableRow.js"
 import {useEffect, useState} from "react";
 import "./Table.css";
 function Table(props){
+    const[index, setIndex] = useState(true);
+    function sorting(){
+        if(index){
+            props.setGrantsCopy(props.grantsCopy.sort((a,b) => a.YearAwarded - b.YearAwarded));
+            setIndex(false);
+        }
+        else{
+            props.setGrantsCopy(props.grantsCopy.sort((a,b) => b.YearAwarded - a.YearAwarded));
+            setIndex(true);
+        }
+    }
     return(
         <table>
             <thead>
@@ -13,7 +24,7 @@ function Table(props){
                 Divisison
             </th>
             <th>
-                Participant
+                Participant(s)
             </th>
             <th>
                 Primary Discipline
@@ -21,8 +32,8 @@ function Table(props){
             <th>
                 Program
             </th>
-            <th>
-                Year Awarded
+            <th onClick={sorting}>
+                Year Awarded &uarr; &darr;
             </th>
             <th>
                 Instituition

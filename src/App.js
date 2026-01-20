@@ -20,16 +20,58 @@ function App() {
   fetchGrant() 
   }, [])
   function pressReset(){
-        setGrantsCopy(grants)
+    setGrantsCopy(grants);
+  }
+  function handleChange(event){
+    const value = event.target.value;
+    if(value == "justKY"){
+      setGrantsCopy(grantsCopy.filter(grant => grant.InstState == "KY"));
     }
-
+    else if(value == "regional"){
+      setGrantsCopy(grants.filter(grant => grant.InstState == "KY" || grant.InstState == "IN" || grant.InstState == "OH"|| grant.InstState == "MO" || grant.InstState == "WV" || grant.InstState == "VA"));
+    }
+    else{
+      setGrantsCopy(grants);
+    }
+  }
+  function getCheckedValues(event){
+    const checkboxes = document.querySelectorAll('input[name="divisions"]:checked');
+    const values = [];
+    checkboxes.forEach((checkbox) => {
+        values.push(checkbox.value);
+    });
+    setGrantsCopy(grants.filter(grant => {
+      for(let i = 0; i<values.length; i++){
+      if(values[i] == grant.Division){
+        return true;
+      }
+    }
+      return false;
+       }))
+  }
   return (<>
     <div className="App">
       <div>
           <h1>Grants</h1>
+          <p>
+            <label>
+               Area?
+            </label>
+            <select id="area" name="area" onChange={handleChange}>
+               <option value="justKY">KY</option>
+               <option value="regional">Regional</option>
+               <option value="all">National</option>
+            </select>
+         </p>
+         <form id="myForm">
+              <input type="checkbox" name="divisions" value="Challenge Programs" /> Challenge Programs 
+              <input type="checkbox" name="divisions" value="Research Programs" /> Research Programs 
+              <input type="checkbox" name="divisions" value="Federal/State Partnership" /> Federal/State Partnership
+              <button type="button" onClick={getCheckedValues}>Get Divisions</button>
+          </form>
           <button onClick = {pressReset}>Reset</button>
-        </div>
-        <Table grants={grants} setGrantsCopy={setGrantsCopy} grantsCopy={grantsCopy}/>
+      </div>
+      <Table grants={grants} setGrantsCopy={setGrantsCopy} grantsCopy={grantsCopy}/>
     </div>
   </>);
 }
