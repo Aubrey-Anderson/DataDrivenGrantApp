@@ -2,10 +2,24 @@
 import ListItem from "./ListItem.js"
 import "./Table.css";
 function TableRow(props){
+    function Participant(grant){
+        if(!(grant.Participant)){
+            return "N/A";
+        }
+        else if(grant.Participant instanceof Array){
+            return<ul>{props.grant.Participant.map(participant => <ListItem participant={participant} />)}</ul>
+        }
+        else{
+            return <p>{grant.Participant.Firstname} {grant.Participant.Lastname}</p>;
+        }
+    }
     return(
         <tr>
             <td>{props.grant.ProjectTitle}</td>
             <td>{props.grant.Division}</td>
+            <td>
+                {Participant(props.grant)}
+            </td>
             <td>{props.grant.PrimaryDiscipline}</td>
             <td>{props.grant.Program}</td>
             <td>{props.grant.YearAwarded}</td>
@@ -16,8 +30,3 @@ function TableRow(props){
 }
 
 export default TableRow;
-//<td>
-    //<ul>
-       // {props.grant.Participant?.map(participant => <ListItem participant={participant} />)}
-    //</ul>
-//</td>

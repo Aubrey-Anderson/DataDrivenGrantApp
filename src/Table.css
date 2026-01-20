@@ -2,20 +2,38 @@ table{
     background-color: rgb(79, 182, 182);
     width:100%;
 }
-table *{
+table > *{
     width:100%;
     background-color:rgb(226, 243, 236);
-    padding: 10px;
-    margin:5px;
     border: 2px solid rgb(79, 182, 182);
-    font-family: 'Roboto'
+    font-family: 'Roboto';
+    font-size: 14pt;
 }
 th{
     background-color: rgb(79, 182, 182);
     border: 2px solid rgb(79, 182, 182);
     position:sticky;
     top:0px;
+    width:100%;
+    color:white;
+    font-size:18pt;
+
+}
+div{
+    width:100%;
 }
 td{
     color: black;
+    padding: 15px;
+}
+tr:nth-child(even){
+    background-color: white;
+}
+tr{
+    width:100%;
+}
+ul{
+    list-style-type: none;
+    padding-left: 0px;
+    width: 215px;
 }
