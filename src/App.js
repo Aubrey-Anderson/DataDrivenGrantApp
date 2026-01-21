@@ -84,6 +84,7 @@ function App() {
             <button onClick={getSearchValue}>Find Discipline</button>
           </p>
           <button onClick = {pressReset}>Reset</button>
+          <p id="description">Any header that gets larger when you hover over it can be sorted by clicking that header.</p>
         </header>
       <Table grants={grants} setGrantsCopy={setGrantsCopy} grantsCopy={grantsCopy}/>
     </div>

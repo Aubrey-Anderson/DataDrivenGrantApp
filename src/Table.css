@@ -14,22 +14,22 @@ header{
     top:0;
     background-color: white;
     margin-bottom: 15px;
-    height: 240px;
+    height: 270px;
 }
 h1{
     font-size: 30pt;
 }
 th{
     background-color: rgb(79, 182, 182);
-    border: 2px solid rgb(79, 182, 182);
     position:sticky;
-    top:240px;
+    top:270px;
     color:white;
     font-size:18pt;
 }
 td{
     color: black;
     padding: 15px;
+
 }
 tr:nth-child(even){
     background-color: white;
@@ -53,4 +53,7 @@ div button{
 }
 #years:hover, #award:hover, #titles:hover, #state:hover{
     font-size: 20pt;
+}
+#description{
+    font-size: 11pt;
 }
