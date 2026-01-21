@@ -14,13 +14,16 @@ header{
     top:0;
     background-color: white;
     margin-bottom: 15px;
-    height: 180px;
+    height: 240px;
+}
+h1{
+    font-size: 30pt;
 }
 th{
     background-color: rgb(79, 182, 182);
     border: 2px solid rgb(79, 182, 182);
     position:sticky;
-    top:180px;
+    top:240px;
     color:white;
     font-size:18pt;
 }
@@ -48,6 +51,6 @@ form button{
 div button{
     margin-top: 10px;
 }
-#years:hover, #award:hover, #titles:hover{
+#years:hover, #award:hover, #titles:hover, #state:hover{
     font-size: 20pt;
 }

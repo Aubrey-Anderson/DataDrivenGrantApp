@@ -4,7 +4,9 @@ import "./Table.css";
 function Table(props){
     const[index, setIndex] = useState(true);
     const[toggle, setToggle] = useState(true);
-    function sorting(){
+    const[toggleState, setToggleState] = useState(true);
+    const[toggleAmount, setToggleAmount] = useState(true);
+    function sortingYear(){
         if(index){
             let copy=[...props.grants]
             copy.sort((a,b) => a.YearAwarded - b.YearAwarded);
@@ -18,7 +20,21 @@ function Table(props){
             props.setGrantsCopy(copy)
         }
     }
-    function alphabetical(){
+    function sortingAmount(){
+        if(toggleAmount){
+            let copy=[...props.grants]
+            copy.sort((a,b) => a.OriginalAmount - b.OriginalAmount);
+            setToggleAmount(false);
+            props.setGrantsCopy(copy)
+        }
+        else{
+            let copy=[...props.grants]
+            copy.sort((a,b) => b.OriginalAmount - a.OriginalAmount);
+            setToggleAmount(true);
+            props.setGrantsCopy(copy)
+        }
+    }
+    function alphabeticalProject(){
         if(toggle){
             let copy=[...props.grants]
             copy.sort((a,b) => a.ProjectTitle.localeCompare(b.ProjectTitle));
@@ -32,11 +48,25 @@ function Table(props){
             props.setGrantsCopy(copy)
         }
     }
+    function alphabeticalState(){
+        if(toggleState){
+            let copy=[...props.grants]
+            copy.sort((a,b) => a.InstState.localeCompare(b.InstState));
+            setToggleState(false);
+            props.setGrantsCopy(copy)
+        }
+        else{
+            let copy=[...props.grants]
+            copy.sort((a,b) => b.InstState.localeCompare(a.InstState));
+            setToggleState(true);
+            props.setGrantsCopy(copy)
+        }
+    }
     return(
         <table>
             <thead>
             <tr>
-            <th id="titles" onClick={alphabetical}>
+            <th id="titles" onClick={alphabeticalProject}>
                 Project Title
             </th>
             <th>
@@ -51,16 +81,16 @@ function Table(props){
             <th>
                 Program
             </th>
-            <th id="years" onClick={sorting}>
+            <th id="years" onClick={sortingYear}>
                 Year Awarded
             </th>
-            <th id="award" onClick={sorting}>
+            <th id="award" onClick={sortingAmount}>
                 Original Amount
             </th>
             <th>
                 Instituition
             </th>
-            <th>
+            <th id="state" onClick={alphabeticalState}>
                 Instituition State
             </th>
             </tr>

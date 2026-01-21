@@ -50,8 +50,14 @@ function App() {
     setGrantsCopy(grants);
     const checkboxed = document.querySelectorAll('input[type="checkbox"');
     checkboxed.forEach(checkbox => {
-      checkbox.checked = false;
+    checkbox.checked = false;
     });
+  }
+  function getSearchValue(){
+    const searchInput = document.getElementById('disciplineSearch')
+    const value=searchInput.value
+    setGrantsCopy(grants.filter(grant => grant.PrimaryDiscipline.toLowerCase().includes(value.toLowerCase())));
+    searchInput.value=""
   }
   return (<>
     <div className="App">
@@ -73,6 +79,10 @@ function App() {
               <input type="checkbox" name="divisions" value="Federal/State Partnership" /> Federal/State Partnership
               <button type="button" onClick={getCheckedValues}>Get Divisions</button>
           </form>
+          <p>
+            <input type="text" id="disciplineSearch" placeholder="Enter Discipline" />
+            <button onClick={getSearchValue}>Find Discipline</button>
+          </p>
           <button onClick = {pressReset}>Reset</button>
         </header>
       <Table grants={grants} setGrantsCopy={setGrantsCopy} grantsCopy={grantsCopy}/>
