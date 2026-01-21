@@ -1,6 +1,6 @@
 function ListItem(props){
     return(
-        <li>{props.participant.Firstname} {props.participant.Lastname}</li>
+        <li key={props["@AppNumber"]}>{props.participant.Firstname} {props.participant.Lastname}</li>
     );
 }
 

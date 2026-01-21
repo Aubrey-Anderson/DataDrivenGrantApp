@@ -5,11 +5,11 @@ function Table(props){
     const[index, setIndex] = useState(true);
     function sorting(){
         if(index){
-            props.setGrantsCopy(props.grantsCopy.sort((a,b) => a.YearAwarded - b.YearAwarded));
+            props.setGrantsCopy(props.grants.sort((a,b) => a.YearAwarded - b.YearAwarded));
             setIndex(false);
         }
         else{
-            props.setGrantsCopy(props.grantsCopy.sort((a,b) => b.YearAwarded - a.YearAwarded));
+            props.setGrantsCopy(props.grants.sort((a,b) => b.YearAwarded - a.YearAwarded));
             setIndex(true);
         }
     }
@@ -32,7 +32,7 @@ function Table(props){
             <th>
                 Program
             </th>
-            <th onClick={sorting}>
+            <th id="years" onClick={sorting}>
                 Year Awarded &uarr; &darr;
             </th>
             <th>

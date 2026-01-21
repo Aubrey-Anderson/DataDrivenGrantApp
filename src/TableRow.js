@@ -13,9 +13,13 @@ function TableRow(props){
             return <p>{grant.Participant.Firstname} {grant.Participant.Lastname}</p>;
         }
     }
+    function description(){
+        alert(`${props.grant.ProjectDesc}`);
+        
+    }
     return(
         <tr>
-            <td>{props.grant.ProjectTitle}</td>
+            <td onClick={description}>{props.grant.ProjectTitle}</td>
             <td>{props.grant.Division}</td>
             <td>
                 {Participant(props.grant)}

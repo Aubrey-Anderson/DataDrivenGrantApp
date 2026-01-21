@@ -12,16 +12,13 @@ function App() {
       const response = await fetch(url)
       if(response.ok){
         const result = await response.json();
+        setGrants(result.Grants.Grant);
         console.log(result.Grants.Grant)
-        setGrants(result.Grants.Grant)
-        setGrantsCopy(result.Grants.Grant)
+        setGrantsCopy(result.Grants.Grant);
       }
     }
   fetchGrant() 
   }, [])
-  function pressReset(){
-    setGrantsCopy(grants);
-  }
   function handleChange(event){
     const value = event.target.value;
     if(value == "justKY"){
@@ -48,6 +45,13 @@ function App() {
     }
       return false;
        }))
+  }
+  function pressReset(){
+    setGrantsCopy(grants);
+    const checkboxed = document.querySelectorAll('input[type="checkbox"');
+    checkboxed.forEach(checkbox => {
+      checkbox.checked = false;
+    });
   }
   return (<>
     <div className="App">
