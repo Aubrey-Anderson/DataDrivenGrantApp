@@ -3,21 +3,40 @@ import {useEffect, useState} from "react";
 import "./Table.css";
 function Table(props){
     const[index, setIndex] = useState(true);
+    const[toggle, setToggle] = useState(true);
     function sorting(){
         if(index){
-            props.setGrantsCopy(props.grants.sort((a,b) => a.YearAwarded - b.YearAwarded));
+            let copy=[...props.grants]
+            copy.sort((a,b) => a.YearAwarded - b.YearAwarded);
             setIndex(false);
+            props.setGrantsCopy(copy)
         }
         else{
-            props.setGrantsCopy(props.grants.sort((a,b) => b.YearAwarded - a.YearAwarded));
+            let copy=[...props.grants]
+            copy.sort((a,b) => b.YearAwarded - a.YearAwarded);
             setIndex(true);
+            props.setGrantsCopy(copy)
+        }
+    }
+    function alphabetical(){
+        if(toggle){
+            let copy=[...props.grants]
+            copy.sort((a,b) => a.ProjectTitle.localeCompare(b.ProjectTitle));
+            setToggle(false);
+            props.setGrantsCopy(copy)
+        }
+        else{
+            let copy=[...props.grants]
+            copy.sort((a,b) => b.ProjectTitle.localeCompare(a.ProjectTitle));
+            setToggle(true);
+            props.setGrantsCopy(copy)
         }
     }
     return(
         <table>
             <thead>
             <tr>
-            <th>
+            <th id="titles" onClick={alphabetical}>
                 Project Title
             </th>
             <th>
@@ -33,7 +52,10 @@ function Table(props){
                 Program
             </th>
             <th id="years" onClick={sorting}>
-                Year Awarded &uarr; &darr;
+                Year Awarded
+            </th>
+            <th id="award" onClick={sorting}>
+                Original Amount
             </th>
             <th>
                 Instituition

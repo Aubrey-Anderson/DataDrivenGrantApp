@@ -27,6 +27,7 @@ function TableRow(props){
             <td>{props.grant.PrimaryDiscipline}</td>
             <td>{props.grant.Program}</td>
             <td>{props.grant.YearAwarded}</td>
+            <td>{Math.round(props.grant.OriginalAmount)}</td>
             <td>{props.grant.Institution}</td>
             <td>{props.grant.InstState}</td>
         </tr>

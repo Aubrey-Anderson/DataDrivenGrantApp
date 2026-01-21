@@ -6,14 +6,14 @@ import Table from "./Table.js";
 function App() {
   const [grants, setGrants] = useState([{title: "", instituition: ""}]);
   const [grantsCopy, setGrantsCopy] = useState(grants);
-  useEffect(() => {
+  useEffect(() => { 
     async function fetchGrant(){
       const url = "/NEH2020sGrant_Short.json"
       const response = await fetch(url)
       if(response.ok){
         const result = await response.json();
         setGrants(result.Grants.Grant);
-        console.log(result.Grants.Grant)
+        console.log(result)
         setGrantsCopy(result.Grants.Grant);
       }
     }
@@ -55,7 +55,7 @@ function App() {
   }
   return (<>
     <div className="App">
-      <div>
+        <header>
           <h1>Grants</h1>
           <p>
             <label>
@@ -74,7 +74,7 @@ function App() {
               <button type="button" onClick={getCheckedValues}>Get Divisions</button>
           </form>
           <button onClick = {pressReset}>Reset</button>
-      </div>
+        </header>
       <Table grants={grants} setGrantsCopy={setGrantsCopy} grantsCopy={grantsCopy}/>
     </div>
   </>);
