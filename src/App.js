@@ -22,7 +22,7 @@ function App() {
   function handleChange(event){
     const value = event.target.value;
     if(value == "justKY"){
-      setGrantsCopy(grantsCopy.filter(grant => grant.InstState == "KY"));
+      setGrantsCopy(grants.filter(grant => grant.InstState == "KY"));
     }
     else if(value == "regional"){
       setGrantsCopy(grants.filter(grant => grant.InstState == "KY" || grant.InstState == "IN" || grant.InstState == "OH"|| grant.InstState == "MO" || grant.InstState == "WV" || grant.InstState == "VA"));
@@ -56,7 +56,7 @@ function App() {
   function getSearchValue(){
     const searchInput = document.getElementById('disciplineSearch')
     const value=searchInput.value
-    setGrantsCopy(grants.filter(grant => grant.PrimaryDiscipline.toLowerCase().includes(value.toLowerCase())));
+    setGrantsCopy(grantsCopy.filter(grant => grant.PrimaryDiscipline.toLowerCase().includes(value.toLowerCase())));
     searchInput.value=""
   }
   return (<>

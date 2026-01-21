@@ -8,13 +8,13 @@ function Table(props){
     const[toggleAmount, setToggleAmount] = useState(true);
     function sortingYear(){
         if(index){
-            let copy=[...props.grants]
+            let copy=[...props.grantsCopy]
             copy.sort((a,b) => a.YearAwarded - b.YearAwarded);
             setIndex(false);
             props.setGrantsCopy(copy)
         }
         else{
-            let copy=[...props.grants]
+            let copy=[...props.grantsCopy]
             copy.sort((a,b) => b.YearAwarded - a.YearAwarded);
             setIndex(true);
             props.setGrantsCopy(copy)
@@ -22,13 +22,13 @@ function Table(props){
     }
     function sortingAmount(){
         if(toggleAmount){
-            let copy=[...props.grants]
+            let copy=[...props.grantsCopy]
             copy.sort((a,b) => a.OriginalAmount - b.OriginalAmount);
             setToggleAmount(false);
             props.setGrantsCopy(copy)
         }
         else{
-            let copy=[...props.grants]
+            let copy=[...props.grantsCopy]
             copy.sort((a,b) => b.OriginalAmount - a.OriginalAmount);
             setToggleAmount(true);
             props.setGrantsCopy(copy)
@@ -36,13 +36,13 @@ function Table(props){
     }
     function alphabeticalProject(){
         if(toggle){
-            let copy=[...props.grants]
+            let copy=[...props.grantsCopy]
             copy.sort((a,b) => a.ProjectTitle.localeCompare(b.ProjectTitle));
             setToggle(false);
             props.setGrantsCopy(copy)
         }
         else{
-            let copy=[...props.grants]
+            let copy=[...props.grantsCopy]
             copy.sort((a,b) => b.ProjectTitle.localeCompare(a.ProjectTitle));
             setToggle(true);
             props.setGrantsCopy(copy)
@@ -50,13 +50,13 @@ function Table(props){
     }
     function alphabeticalState(){
         if(toggleState){
-            let copy=[...props.grants]
+            let copy=[...props.grantsCopy]
             copy.sort((a,b) => a.InstState.localeCompare(b.InstState));
             setToggleState(false);
             props.setGrantsCopy(copy)
         }
         else{
-            let copy=[...props.grants]
+            let copy=[...props.grantsCopy]
             copy.sort((a,b) => b.InstState.localeCompare(a.InstState));
             setToggleState(true);
             props.setGrantsCopy(copy)
