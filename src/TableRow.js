@@ -19,7 +19,7 @@ function TableRow(props){
     }
     return(
         <tr>
-            <td onClick={description}>{props.grant.ProjectTitle}</td>
+            <td id="individualProj" onClick={description}>{props.grant.ProjectTitle}</td>
             <td>{props.grant.Division}</td>
             <td>
                 {Participant(props.grant)}

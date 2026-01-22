@@ -57,3 +57,6 @@ div button{
 #description{
     font-size: 11pt;
 }
+#individualProj{
+    cursor:pointer;
+}
